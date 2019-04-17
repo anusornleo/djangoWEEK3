@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'polls/css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <title>Create Poll</title>
+    <style>
+        .errorlist{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form method="POST" action="{% url 'create_poll' %}">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    <p>
+        form.non_field_errors
+    </p>
+    {% endif %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+</body>
+</html>
